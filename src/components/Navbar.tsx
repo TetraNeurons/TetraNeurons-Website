@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -39,6 +40,11 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* Theme Toggle */}
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -63,6 +69,9 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden pb-4 space-y-2">
+            <div className="px-4 py-2">
+              <ThemeToggle />
+            </div>
             <Link href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg">
               Home
             </Link>
