@@ -13,14 +13,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TetraNeurons - AI-Driven Software Innovation",
-  description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions.",
-  keywords: "AI, Software Development, Innovation, Hackathon, Web3, Sustainable Technology",
+  title: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
+  description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions in Web3, sustainable tech, and enterprise applications.",
+  keywords: "AI, Software Development, Innovation, Hackathon, Web3, Sustainable Technology, Enterprise Solutions, Next.js, TypeScript, Tailwind CSS, Agentic AI",
   authors: [{ name: "TetraNeurons" }],
+  metadataBase: new URL('https://tetraneurons.com'), // Placeholder for canonical URL
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: "TetraNeurons - AI-Driven Software Innovation",
-    description: "Empowering businesses with AI-driven software and agentic innovation.",
-    type: "website",
+    title: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
+    description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions.",
+    url: 'https://tetraneurons.com',
+    siteName: 'TetraNeurons Software Company',
+    images: [
+      {
+        url: '/og-image.jpg', // Placeholder for social media image
+        width: 1200,
+        height: 630,
+        alt: 'TetraNeurons - AI-Driven Software Innovation',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
+    description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions.",
+    creator: '@TetraNeurons', // Placeholder for Twitter handle
+    images: ['/og-image.jpg'], // Placeholder for social media image
   },
 };
 
