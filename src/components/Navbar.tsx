@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ThemeToggle from './ThemeToggle';
 import { useState } from 'react';
 
@@ -13,12 +14,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">T</span>
-            </div>
-            <span className="font-bold text-xl hidden sm:inline bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-              TetraNeurons
-            </span>
+            <img src="/logo.png" alt="TetraNeurons Logo" className="h-8 w-auto dark:invert" />
           </Link>
 
           {/* Desktop Menu */}
