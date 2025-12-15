@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="TetraNeurons Logo" className="h-8 w-auto dark:invert" />
+            <img src="/logo.png" alt="TetraNeurons Logo" className="h-10 w-auto dark:invert" />
           </Link>
 
           {/* Desktop Menu */}
