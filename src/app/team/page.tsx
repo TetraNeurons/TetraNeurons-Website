@@ -1,47 +1,63 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export default function Team() {
   const teamMembers = [
     {
       id: 1,
-      name: 'Full Stack Developer',
-      role: 'Lead Developer',
-      expertise: ['Next.js', 'React', 'Node.js', 'TypeScript'],
-      bio: 'Passionate about building scalable web applications with modern technologies.',
+      name: 'ISARA MADUNIKA',
+      role: 'AI & ML Developer',
+      expertise: ['Python', 'TensorFlow', 'Machine Learning', 'LLMs'],
+      bio: 'Focused on developing intelligent solutions using cutting-edge AI technologies.',
       avatar: '👨‍💻',
+      email: 'isharamadunika9@gmail.com',
+      phone: '0770264992',
+      slug: 'isara-madunika',
     },
     {
       id: 2,
-      name: 'AI/ML Specialist',
-      role: 'AI Engineer',
-      expertise: ['Python', 'TensorFlow', 'Machine Learning', 'LLMs'],
-      bio: 'Focused on developing intelligent solutions using cutting-edge AI technologies.',
+      name: 'THIRAMITHU KULASOORIYA',
+      role: 'Full-stack Developer',
+      expertise: ['Next.js', 'React', 'Node.js', 'TypeScript'],
+      bio: 'Passionate about building scalable web applications with modern technologies.',
       avatar: '🤖',
+      email: 'kulasoooriyaa@gmail.com',
+      phone: '0785866652',
+      slug: 'thiramithu-kulasooriya',
     },
     {
       id: 3,
-      name: 'Blockchain Developer',
-      role: 'Web3 Engineer',
-      expertise: ['Solidity', 'Web3.js', 'Ethereum', 'Smart Contracts'],
-      bio: 'Building decentralized applications and sustainable Web3 solutions.',
-      avatar: '⛓️',
+      name: 'SADESHA JAYAWEERA',
+      role: 'Business Analyst',
+      expertise: ['Agile', 'Scrum', 'Team Management', 'Strategic Planning'],
+      bio: 'Coordinating teams and ensuring successful project delivery.',
+      avatar: '📊',
+      email: 'sadeesha.jayaweera@gmail.com',
+      phone: '0774928297',
+      slug: 'sadesha-jayaweera',
     },
     {
       id: 4,
-      name: 'DevOps Engineer',
-      role: 'Infrastructure Specialist',
-      expertise: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+      name: 'KAVINDU DESHAPRIYA',
+      role: 'Backend Developer',
+      expertise: ['Ballerina', 'Node.js', 'PostgreSQL', 'REST API'],
       bio: 'Ensuring scalable, secure, and reliable infrastructure for all projects.',
       avatar: '☁️',
+      email: 'ksdeshappriya.official@gmail.com',
+      phone: '0710559795',
+      slug: 'kavindu-deshapriya',
     },
     {
       id: 5,
-      name: 'UI/UX Designer',
-      role: 'Design Lead',
+      name: 'SAMSUDEEN ASHAD',
+      role: 'Frontend Developer',
       expertise: ['Figma', 'UI Design', 'UX Research', 'Tailwind CSS'],
       bio: 'Creating beautiful and intuitive user experiences that users love.',
       avatar: '🎨',
+      email: 'samsudeenashad@gmail.com',
+      phone: '0705390110',
+      slug: 'samsudeen-ashad',
     },
     {
       id: 6,
@@ -49,7 +65,10 @@ export default function Team() {
       role: 'Team Lead',
       expertise: ['Agile', 'Scrum', 'Team Management', 'Strategic Planning'],
       bio: 'Coordinating teams and ensuring successful project delivery.',
-      avatar: '📊',
+      avatar: '👨‍💼',
+      email: 'placeholder@tetraneurons.com',
+      phone: 'N/A',
+      slug: 'project-manager',
     },
   ];
 
@@ -124,9 +143,9 @@ export default function Team() {
                   </div>
 
                   <div className="flex gap-2">
-                    <button className="flex-1 px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-semibold rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
-                      Connect
-                    </button>
+                    <Link href={`/team/${member.slug}`} className="flex-1 text-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all">
+                      View Profile
+                    </Link>
                   </div>
                 </div>
               </div>
