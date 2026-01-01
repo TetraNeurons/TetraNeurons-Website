@@ -9,12 +9,14 @@ export default function ThemeToggle() {
   // Only run on client side after mount
   useEffect(() => {
     setMounted(true);
-    // Check the current theme from localStorage or system preference
+    // Check the current theme from localStorage only
+    // Default to light mode for first-time visitors
     const storedTheme = localStorage.getItem('color-theme');
     if (storedTheme) {
       setTheme(storedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
+    } else {
+      // First-time visitor: default to light mode
+      setTheme('light');
     }
   }, []);
 

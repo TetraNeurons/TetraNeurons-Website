@@ -61,7 +61,8 @@ export default function RootLayout({
               (function() {
                 try {
                   var theme = localStorage.getItem('color-theme');
-                  var isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                  // Default to light mode for first-time visitors (no stored theme)
+                  var isDark = theme === 'dark';
                   if (isDark) {
                     document.documentElement.classList.add('dark');
                     document.documentElement.classList.remove('light');
