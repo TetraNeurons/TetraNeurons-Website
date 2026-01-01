@@ -76,10 +76,10 @@ export default function Team() {
     {
       id: 1,
       name: 'SAMSUDEEN ASHAD',
-      role: 'Team Lead | Software Engineering Undergraduate',
-      expertise: ['Leadership', 'Software Engineering', 'Project Management', 'Full Stack'],
+      role: 'Project Manager | Frontend Developer',
+      expertise: ['Project Management', 'Frontend Development', 'React', 'Next.js'],
       bio: 'Leading TetraNeurons with a vision to build meaningful, human-centered software solutions.',
-      avatarType: 'leader',
+      avatarType: 'developer',
       email: 'samsudeenashad@gmail.com',
       phone: '0705390110',
       slug: 'samsudeen-ashad',
@@ -87,7 +87,7 @@ export default function Team() {
     {
       id: 2,
       name: 'ISARA MADUNIKA',
-      role: 'Software Developer',
+      role: 'AI / ML Developer',
       expertise: ['Python', 'TensorFlow', 'Machine Learning', 'LLMs'],
       bio: 'Focused on developing intelligent solutions using cutting-edge AI technologies.',
       avatarType: 'developer',
@@ -98,7 +98,7 @@ export default function Team() {
     {
       id: 3,
       name: 'THIRAMITHU KULASOORIYA',
-      role: 'Software Developer',
+      role: 'Fullstack Developer',
       expertise: ['Next.js', 'React', 'Node.js', 'TypeScript'],
       bio: 'Passionate about building scalable web applications with modern technologies.',
       avatarType: 'developer',
@@ -109,7 +109,7 @@ export default function Team() {
     {
       id: 4,
       name: 'KAVINDU DESHAPRIYA',
-      role: 'Software Developer',
+      role: 'Backend Developer',
       expertise: ['Ballerina', 'Node.js', 'PostgreSQL', 'REST API'],
       bio: 'Ensuring scalable, secure, and reliable infrastructure for all projects.',
       avatarType: 'developer',
@@ -120,13 +120,24 @@ export default function Team() {
     {
       id: 5,
       name: 'SADESHA JAYAWEERA',
-      role: 'Software Developer',
+      role: 'Business Analyst | Developer',
       expertise: ['Agile', 'Scrum', 'Business Analysis', 'Full Stack'],
       bio: 'Coordinating teams and ensuring successful project delivery.',
       avatarType: 'developer',
       email: 'sadeesha.jayaweera@gmail.com',
       phone: '0774928297',
       slug: 'sadesha-jayaweera',
+    },
+    {
+      id: 6,
+      name: 'SAJANI SAUNDARAJAN',
+      role: 'Quality Assurance (QA)',
+      expertise: ['Quality Assurance', 'Testing', 'Test Automation', 'Documentation'],
+      bio: 'Ensuring the highest quality standards for all TetraNeurons projects.',
+      avatarType: 'developer',
+      email: 'sajani.saundarajan@gmail.com',
+      phone: '',
+      slug: 'sajani-saundarajan',
     },
   ];
 
@@ -191,21 +202,13 @@ export default function Team() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={member.id} className={`scroll-animate opacity-0 translate-y-10 group bg-white dark:bg-[#0f172a] rounded-2xl overflow-hidden border border-blue-100 dark:border-blue-900/30 hover:border-transparent transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-500/20 ${index === 0 ? 'md:col-span-2 lg:col-span-1 ring-2 ring-blue-500/50' : ''}`}>
+              <div key={member.id} className={`scroll-animate opacity-0 translate-y-10 group bg-white dark:bg-[#0f172a] rounded-2xl overflow-hidden border border-blue-100 dark:border-blue-900/30 hover:border-transparent transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-500/20`}>
                 {/* Avatar */}
-                <div className={`h-40 bg-gradient-to-br ${index === 0 ? 'from-blue-500 via-cyan-500 to-blue-600' : 'from-blue-400 to-cyan-500'} flex items-center justify-center relative overflow-hidden`}>
+                <div className={`h-40 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
                   <div className="relative z-10 w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-125 transition-transform duration-500 border border-white/30">
                     {member.avatarType === 'leader' ? <LeaderIcon /> : <DeveloperIcon />}
                   </div>
-                  {index === 0 && (
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-[#0f172a]/90 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full shadow-lg flex items-center gap-1">
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      Team Lead
-                    </div>
-                  )}
                 </div>
 
                 {/* Member Info */}
