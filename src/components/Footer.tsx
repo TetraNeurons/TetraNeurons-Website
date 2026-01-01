@@ -138,14 +138,9 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-blue-100 dark:border-blue-900/30">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex justify-center items-center">
             <p className="text-gray-500 dark:text-gray-500 text-sm">
               © {currentYear} TetraNeurons. All rights reserved.
-            </p>
-            <p className="text-gray-500 dark:text-gray-500 text-sm flex items-center gap-2">
-              <span>Built with</span>
-              <span className="text-red-500">❤️</span>
-              <span>using Next.js & Tailwind CSS</span>
             </p>
           </div>
         </div>
