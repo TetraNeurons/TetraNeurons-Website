@@ -78,10 +78,10 @@ export default function Home() {
   ];
 
   const achievements = [
-    { number: '4+', label: 'Major Projects' },
-    { number: '6+', label: 'Competitions' },
-    { number: '🥇', label: 'INSL Winner' },
-    { number: '🥈', label: 'GreenExe 3.0' },
+    { number: '5+', label: 'Major Projects' },
+    { number: '10+', label: 'Competitions' },
+    { number: '5+', label: 'Winnings' },
+    { number: '1+', label: 'Awards' },
   ];
 
   return (
