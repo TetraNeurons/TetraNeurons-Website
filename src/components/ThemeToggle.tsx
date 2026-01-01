@@ -2,55 +2,65 @@
 
 import { useState, useEffect } from 'react';
 
-const getInitialTheme = () => {
-  if (typeof window !== 'undefined' && window.localStorage) {
-    const storedPrefs = window.localStorage.getItem('color-theme');
-    if (typeof storedPrefs === 'string') {
-      return storedPrefs;
-    }
-
-    const userMedia = window.matchMedia('(prefers-color-scheme: dark)');
-    if (userMedia.matches) {
-      return 'dark';
-    }
-  }
-  // Default to light theme if no preference is found
-  return 'light';
-};
-
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<string>('light');
 
-  const rawSetTheme = (rawTheme: string) => {
-    const root = window.document.documentElement;
-    const isDark = rawTheme === 'dark';
-
-    root.classList.remove(isDark ? 'light' : 'dark');
-    root.classList.add(rawTheme);
-
-    localStorage.setItem('color-theme', rawTheme);
-  };
+  // Only run on client side after mount
+  useEffect(() => {
+    setMounted(true);
+    // Check the current theme from localStorage or system preference
+    const storedTheme = localStorage.getItem('color-theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+    }
+  }, []);
 
   useEffect(() => {
-    rawSetTheme(theme);
-  }, [theme]);
+    if (!mounted) return;
+    
+    const root = window.document.documentElement;
+    
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+    } else {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    }
+    
+    localStorage.setItem('color-theme', theme);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <button
+        className="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 transition-all duration-300"
+        aria-label="Toggle Dark Mode"
+      >
+        <div className="h-5 w-5" />
+      </button>
+    );
+  }
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+      className="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-800/50 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:scale-110"
       aria-label="Toggle Dark Mode"
     >
       {theme === 'dark' ? (
-        // Sun icon for light mode
+        // Sun icon for switching to light mode
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-yellow-500"
+          className="h-5 w-5 text-yellow-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -63,10 +73,10 @@ export default function ThemeToggle() {
           />
         </svg>
       ) : (
-        // Moon icon for dark mode
+        // Moon icon for switching to dark mode
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-gray-900"
+          className="h-5 w-5 text-blue-600"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

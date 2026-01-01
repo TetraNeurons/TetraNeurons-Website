@@ -1,163 +1,178 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export default function Projects() {
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('.scroll-animate').forEach((el) => {
+      observerRef.current?.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
   const projects = [
     {
       id: 1,
-      title: 'Agriලංකා',
-      category: 'Marketplace Platform',
-      description: 'A revolutionary agricultural marketplace connecting Sri Lankan farmers directly with buyers through a triple-channel system: Web App, WhatsApp Bot, and AI-powered solutions. It addresses market misuse, post-harvest loss, and lack of price transparency.',
+      title: 'TetraNeurons Disaster Management Application',
+      category: 'Disaster Management',
+      description: 'A comprehensive disaster management platform designed to support early warnings, emergency response, and post-disaster coordination. Winner of 1st Place at Innovative Nation Sri Lanka (INSL) organized by IEEE Sri Lanka.',
       features: [
-        'Triple-Channel Access (Web App + WhatsApp Bot + AI Assistant)',
-        'AI-Powered Chat/Query System (GemiLib)',
-        'Hyper-Local Proximity Search (GeoHash Indexing)',
-        'Multi-language Interface (Sinhala, Tamil, English)',
-        'Direct Farmer-to-Buyer Market Access',
+        'Real-time disaster alerts',
+        'Location-based notifications',
+        'Emergency contact access',
+        'Shelter & resource mapping',
+        'Community reporting system',
       ],
-      technologies: ['Next.js', 'React', 'Node.js', 'Ballerina', 'PostgreSQL', 'Appwrite', 'Tailwind CSS'],
-      image: '🌾',
+      technologies: ['React', 'Flutter', 'Node.js', 'Express', 'Firebase', 'MongoDB', 'Google Maps API'],
+      image: '🔴',
+      gradient: 'from-red-500 via-orange-500 to-amber-500',
       status: 'Active',
+      achievement: '🥇 1st Place - INSL',
     },
     {
       id: 2,
-      title: 'Web3.0 Sustainable Healthcare Ecosystem',
-      category: 'Hackathon Project',
-      description: 'Built during a 72-hour hackathon with participation from 16 states, this Web3.0 ecosystem focuses on creating sustainable healthcare solutions using blockchain technology and decentralized architecture.',
+      title: 'Baminithiya Disaster Management Application',
+      category: 'Disaster Management',
+      description: 'A community-focused disaster preparedness and response system that empowers citizens and volunteers. Top 10 Finalist in Innovate with Ballerina (WSO2) competition, focusing on cloud-native integration and APIs.',
       features: [
-        'Decentralized healthcare records',
-        'Blockchain-based data security',
-        'Smart contracts for healthcare transactions',
-        'Sustainable practices integration',
-        'Cross-state collaboration platform',
+        'Disaster preparedness guides',
+        'Incident reporting',
+        'Volunteer coordination',
+        'AI-assisted help chatbot',
+        'Community resilience tools',
       ],
-      technologies: ['Web3.js', 'Solidity', 'Ethereum', 'React', 'IPFS'],
-      image: '🏥',
-      status: 'Completed',
+      technologies: ['Ballerina', 'React', 'Node.js', 'REST APIs', 'Cloud-native'],
+      image: '🔵',
+      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+      status: 'Active',
+      achievement: '🌟 Top 10 - WSO2',
     },
     {
       id: 3,
-      title: 'Ballerina Competition Platform',
-      category: 'Competition Project',
-      description: 'An innovative platform that reached the Final 15 in the Ballerina Competition 2025, organized by IEEE Student Branch. Showcasing our technical excellence and innovative approach to solving complex challenges.',
+      title: 'Heritage Lanka – Travel Guide Platform',
+      category: 'Tourism',
+      description: 'A digital travel guide that highlights Sri Lanka\'s cultural heritage, historical landmarks, and tourism destinations. Submitted to NBQSA (National Best Quality Software Awards) in the Software Innovation / Web Applications category.',
       features: [
-        'Advanced algorithm implementation',
-        'Real-time data processing',
-        'Performance optimization',
-        'Scalable architecture',
-        'User-friendly interface',
+        'Interactive destination map',
+        'Cultural & historical content',
+        'Suggested travel itineraries',
+        'Local recommendations',
+        'Digital storytelling',
       ],
-      technologies: ['Python', 'FastAPI', 'React', 'PostgreSQL', 'Docker'],
-      image: '💃',
-      status: 'In Development',
+      technologies: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Google Maps API'],
+      image: '🟢',
+      gradient: 'from-green-500 via-emerald-500 to-teal-500',
+      status: 'Active',
+      achievement: '📝 NBQSA Submission',
     },
     {
       id: 4,
-      title: 'AI-Powered CRM System',
-      category: 'Enterprise Solution',
-      description: 'A comprehensive Customer Relationship Management system powered by artificial intelligence. Features project management, invoice generation, and workflow automation to help businesses streamline operations.',
+      title: 'Agrilanka',
+      category: 'Agri-Tech / SaaS',
+      description: 'An agri-tech marketplace connecting farmers, buyers, and service providers through a digital platform. 1st Runner-Up at GreenExe 3.0 organized by Association of Software Engineering - NSBM Green University.',
       features: [
-        'Project management dashboard',
-        'Invoice & estimate generation',
-        'AI-powered customer insights',
-        'Workflow automation',
-        'Real-time analytics',
+        'Farmer marketplace',
+        'Crop advisory & weather alerts',
+        'Supply chain visibility',
+        'Community discussion forums',
+        'Multi-language Interface (Sinhala, Tamil, English)',
       ],
-      technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'TensorFlow', 'Stripe API'],
-      image: '⚙️',
+      technologies: ['Next.js', 'React', 'Node.js', 'Ballerina', 'PostgreSQL', 'Appwrite', 'Tailwind CSS'],
+      image: '🟡',
+      gradient: 'from-amber-500 via-yellow-500 to-lime-500',
       status: 'Active',
-    },
-    {
-      id: 5,
-      title: 'Agentic AI Assistant',
-      category: 'AI Innovation',
-      description: 'An autonomous AI agent designed to streamline business workflows and increase productivity. The agent learns from user interactions and continuously improves its performance.',
-      features: [
-        'Natural language processing',
-        'Autonomous task execution',
-        'Machine learning integration',
-        'Real-time decision making',
-        'Continuous learning capability',
-      ],
-      technologies: ['Python', 'OpenAI API', 'LangChain', 'FastAPI', 'PostgreSQL'],
-      image: '🤖',
-      status: 'Active',
-    },
-    {
-      id: 6,
-      title: 'Cloud Infrastructure Optimization',
-      category: 'DevOps Project',
-      description: 'A cloud infrastructure optimization solution that helps businesses reduce costs and improve performance. Includes monitoring, auto-scaling, and resource allocation optimization.',
-      features: [
-        'Cloud cost analysis',
-        'Auto-scaling configuration',
-        'Performance monitoring',
-        'Resource optimization',
-        'Multi-cloud support',
-      ],
-      technologies: ['AWS', 'Kubernetes', 'Docker', 'Terraform', 'Python'],
-      image: '☁️',
-      status: 'Active',
+      achievement: '🥈 1st Runner-Up - GreenExe',
     },
   ];
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black">
+    <main className="min-h-screen bg-white dark:bg-[#0a1628] overflow-hidden">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Our Projects
+      <section className="relative min-h-[60vh] flex items-center justify-center pt-20 hero-pattern">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+        <div className="absolute inset-0 grid-pattern opacity-50"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 mb-8 animate-fade-in-down">
+            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">🚀 Award-Winning Solutions</span>
+          </div>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 animate-fade-in-up">
+            <span className="text-gray-900 dark:text-white">Our </span>
+            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent">Projects</span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Showcasing our award-winning projects and innovations that demonstrate our expertise in AI, Web3, and enterprise solutions.
+
+          <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in-up">
+            Showcasing our award-winning projects in <span className="text-blue-600 dark:text-blue-400 font-semibold">disaster management</span>, <span className="text-green-600 dark:text-green-400 font-semibold">agriculture</span>, and <span className="text-amber-600 dark:text-amber-400 font-semibold">tourism</span>.
           </p>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20">
+      <section className="py-24 bg-gradient-to-b from-blue-50 to-white dark:from-[#0f172a] dark:to-[#0a1628]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project) => (
-              <div
-                key={project.id}
-                className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-all transform hover:-translate-y-2"
-              >
+              <div key={project.id} className="scroll-animate opacity-0 translate-y-10 group bg-white dark:bg-[#0f172a] rounded-2xl overflow-hidden border border-blue-100 dark:border-blue-900/30 hover:border-transparent transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-500/20">
                 {/* Project Image */}
-                <div className="h-40 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-5xl">
-                  {project.image}
+                <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
+                  <span className="text-7xl relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
+                  {project.achievement && (
+                    <div className="absolute top-4 right-4 px-4 py-2 bg-white/90 dark:bg-[#0f172a]/90 text-gray-900 dark:text-white text-sm font-bold rounded-xl shadow-lg backdrop-blur-sm">
+                      {project.achievement}
+                    </div>
+                  )}
                 </div>
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-sm font-semibold rounded-full">
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="inline-block px-4 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold rounded-full">
                       {project.category}
                     </span>
-                    <span className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
+                    <span className={`inline-block px-4 py-1.5 text-sm font-semibold rounded-full ${
                       project.status === 'Active'
-                        ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300'
-                        : project.status === 'Completed'
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                        : 'bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300'
+                        ? 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                        : 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
                     }`}>
                       {project.status}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">{project.description}</p>
 
                   {/* Features */}
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-sm mb-2">Key Features:</h4>
-                    <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-sm mb-3 text-gray-700 dark:text-gray-300">Key Features:</h4>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
                       {project.features.slice(0, 3).map((feature, index) => (
                         <li key={index} className="flex items-start gap-2">
-                          <span className="text-blue-500 mt-1">•</span>
+                          <span className="text-blue-500 mt-0.5">✦</span>
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -165,22 +180,20 @@ export default function Projects() {
                   </div>
 
                   {/* Technologies */}
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-sm mb-2">Technologies:</h4>
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-sm mb-3 text-gray-700 dark:text-gray-300">Technologies:</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold rounded"
-                        >
+                        <span key={index} className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-full border border-blue-200 dark:border-blue-800">
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <button className="w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all">
-                    View Details
+                  <button className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center gap-2">
+                    <span>View Details</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                   </button>
                 </div>
               </div>
@@ -190,15 +203,22 @@ export default function Projects() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Interested in Working Together?</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            We&apos;re always looking for exciting new projects and collaborations. Let&apos;s build something amazing together.
-          </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all inline-block">
-            Start a Project
-          </button>
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-float"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl animate-float"></div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="scroll-animate opacity-0 translate-y-10">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Interested in Working Together?</h2>
+            <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+              We&apos;re always looking for exciting new projects and collaborations. Let&apos;s build something amazing together.
+            </p>
+            <Link href="/contact" className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1">
+              <span>Start a Project</span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
+          </div>
         </div>
       </section>
 
