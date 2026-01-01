@@ -35,12 +35,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-6 group">
+            <Link href="/" className="flex items-center gap-4 mb-6 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-                <img src="/logo.png" alt="TetraNeurons Logo" className="relative h-10 w-auto dark:invert" />
+                <img src="/logo.png" alt="TetraNeurons Logo" className="relative h-20 w-auto dark:invert" />
               </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 TetraNeurons
               </span>
             </Link>

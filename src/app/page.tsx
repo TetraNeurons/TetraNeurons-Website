@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { AlertIcon, GlobeIcon, SparklesIcon, MapPinIcon, TrophyIcon, FireIcon, StarIcon, LeafIcon } from '@/components/Icons';
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -26,53 +27,53 @@ export default function Home() {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  const features = [
+  const features: { title: string; description: string; icon: ReactNode; color: string }[] = [
     {
       title: 'Disaster Management',
       description: 'Building comprehensive disaster response and emergency coordination systems.',
-      icon: '🚨',
-      color: 'from-red-500 to-orange-500',
+      icon: <AlertIcon />,
+      color: 'from-red-500 to-rose-600',
     },
     {
       title: 'Agricultural Solutions',
       description: 'Connecting farmers, buyers, and service providers through innovative agri-tech platforms.',
-      icon: '🌾',
-      color: 'from-green-500 to-emerald-500',
+      icon: <LeafIcon />,
+      color: 'from-green-500 to-emerald-600',
     },
     {
       title: 'Award-Winning Team',
       description: 'Hackathon champions with proven expertise in building scalable solutions.',
-      icon: '🏆',
-      color: 'from-yellow-500 to-amber-500',
+      icon: <SparklesIcon />,
+      color: 'from-amber-500 to-yellow-500',
     },
     {
       title: 'Tourism & Heritage',
       description: 'Creating digital solutions for cultural preservation and tourism.',
-      icon: '�️',
+      icon: <MapPinIcon />,
       color: 'from-blue-500 to-cyan-500',
     },
   ];
 
-  const projects = [
+  const projects: { title: string; description: string; category: string; icon: ReactNode; gradient: string }[] = [
     {
       title: 'TetraNeurons Disaster Management',
       description: 'A comprehensive disaster management platform. Winner of 1st Place at INSL (IEEE Sri Lanka).',
-      category: '🥇 1st Place - INSL',
-      image: '🔴',
+      category: '1st Place - INSL',
+      icon: <TrophyIcon />,
       gradient: 'from-red-500 to-rose-600',
     },
     {
       title: 'Agrilanka',
       description: 'An agri-tech marketplace. 1st Runner-Up at GreenExe 3.0 (NSBM Green University).',
-      category: '🥈 1st Runner-Up',
-      image: '🟡',
+      category: '1st Runner-Up',
+      icon: <FireIcon />,
       gradient: 'from-green-500 to-emerald-600',
     },
     {
       title: 'Baminithiya',
       description: 'Community-focused disaster preparedness system. Top 10 Finalist in Innovate with Ballerina (WSO2).',
-      category: '🌟 Top 10 Finalist',
-      image: '�',
+      category: 'Top 10 Finalist',
+      icon: <StarIcon />,
       gradient: 'from-blue-500 to-indigo-600',
     },
   ];
@@ -173,7 +174,9 @@ export default function Home() {
             {features.map((feature, index) => (
               <div key={index} className="scroll-animate opacity-0 translate-y-10 group p-8 rounded-2xl bg-white dark:bg-[#0f172a] border border-blue-100 dark:border-blue-900/30 hover:border-transparent transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 relative overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>{feature.icon}</div>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg backdrop-blur-sm border border-white/20`}>
+                  {feature.icon}
+                </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{feature.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
               </div>
@@ -198,10 +201,17 @@ export default function Home() {
               <div key={index} className="scroll-animate opacity-0 translate-y-10 group bg-white dark:bg-[#0f172a] rounded-2xl overflow-hidden border border-blue-100 dark:border-blue-900/30 hover:border-transparent transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-500/20">
                 <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
-                  <span className="text-7xl relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
+                  <div className="relative z-10 w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-125 transition-transform duration-500 border border-white/30">
+                    {project.icon}
+                  </div>
                 </div>
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold rounded-full mb-4">{project.category}</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold rounded-full mb-4">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                    {project.category}
+                  </span>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">{project.description}</p>
                   <Link href="/projects" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all">

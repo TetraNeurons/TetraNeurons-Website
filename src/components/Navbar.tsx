@@ -23,14 +23,14 @@ export default function Navbar() {
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-4 group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-              <img src="/logo.png" alt="TetraNeurons Logo" className="relative h-10 w-auto dark:invert transition-transform duration-300 group-hover:scale-110" />
+              <img src="/logo.png" alt="TetraNeurons Logo" className="relative h-20 w-auto dark:invert transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hidden sm:block">
+            <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hidden sm:block">
               TetraNeurons
             </span>
           </Link>

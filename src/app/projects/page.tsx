@@ -1,9 +1,29 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { AlertIcon, GlobeIcon, MapPinIcon, LeafIcon, TrophyIcon, FireIcon, StarIcon } from '@/components/Icons';
+
+// Professional project icons
+const DisasterIcon = () => (
+  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.285zm0 13.036h.008v.008H12v-.008z" />
+  </svg>
+);
+
+const TourismIcon = () => (
+  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+  </svg>
+);
+
+const AgriIcon = () => (
+  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+  </svg>
+);
 
 export default function Projects() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -28,7 +48,7 @@ export default function Projects() {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  const projects = [
+  const projects: { id: number; title: string; category: string; description: string; features: string[]; technologies: string[]; icon: ReactNode; gradient: string; status: string; achievement: string }[] = [
     {
       id: 1,
       title: 'TetraNeurons Disaster Management Application',
@@ -42,10 +62,10 @@ export default function Projects() {
         'Community reporting system',
       ],
       technologies: ['React', 'Flutter', 'Node.js', 'Express', 'Firebase', 'MongoDB', 'Google Maps API'],
-      image: '🔴',
+      icon: <DisasterIcon />,
       gradient: 'from-red-500 via-orange-500 to-amber-500',
       status: 'Active',
-      achievement: '🥇 1st Place - INSL',
+      achievement: '1st Place - INSL',
     },
     {
       id: 2,
@@ -60,10 +80,10 @@ export default function Projects() {
         'Community resilience tools',
       ],
       technologies: ['Ballerina', 'React', 'Node.js', 'REST APIs', 'Cloud-native'],
-      image: '🔵',
+      icon: <DisasterIcon />,
       gradient: 'from-blue-500 via-cyan-500 to-teal-500',
       status: 'Active',
-      achievement: '🌟 Top 10 - WSO2',
+      achievement: 'Top 10 - WSO2',
     },
     {
       id: 3,
@@ -78,10 +98,10 @@ export default function Projects() {
         'Digital storytelling',
       ],
       technologies: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Google Maps API'],
-      image: '🟢',
+      icon: <TourismIcon />,
       gradient: 'from-green-500 via-emerald-500 to-teal-500',
       status: 'Active',
-      achievement: '📝 NBQSA Submission',
+      achievement: 'NBQSA Submission',
     },
     {
       id: 4,
@@ -96,10 +116,10 @@ export default function Projects() {
         'Multi-language Interface (Sinhala, Tamil, English)',
       ],
       technologies: ['Next.js', 'React', 'Node.js', 'Ballerina', 'PostgreSQL', 'Appwrite', 'Tailwind CSS'],
-      image: '🟡',
+      icon: <AgriIcon />,
       gradient: 'from-amber-500 via-yellow-500 to-lime-500',
       status: 'Active',
-      achievement: '🥈 1st Runner-Up - GreenExe',
+      achievement: '1st Runner-Up - GreenExe',
     },
   ];
 
@@ -140,9 +160,14 @@ export default function Projects() {
                 {/* Project Image */}
                 <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
-                  <span className="text-7xl relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
+                  <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-125 transition-transform duration-500 border border-white/30">
+                    {project.icon}
+                  </div>
                   {project.achievement && (
-                    <div className="absolute top-4 right-4 px-4 py-2 bg-white/90 dark:bg-[#0f172a]/90 text-gray-900 dark:text-white text-sm font-bold rounded-xl shadow-lg backdrop-blur-sm">
+                    <div className="absolute top-4 right-4 px-4 py-2 bg-white/90 dark:bg-[#0f172a]/90 text-gray-900 dark:text-white text-sm font-bold rounded-xl shadow-lg backdrop-blur-sm flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
                       {project.achievement}
                     </div>
                   )}
@@ -172,7 +197,9 @@ export default function Projects() {
                     <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
                       {project.features.slice(0, 3).map((feature, index) => (
                         <li key={index} className="flex items-start gap-2">
-                          <span className="text-blue-500 mt-0.5">✦</span>
+                          <svg className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
                           <span>{feature}</span>
                         </li>
                       ))}
