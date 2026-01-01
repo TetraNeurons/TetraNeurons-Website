@@ -1,4 +1,4 @@
-export interface TeamMember {
+﻿export interface TeamMember {
   id: number;
   name: string;
   role: string;
@@ -24,7 +24,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Team Lead | Software Engineering Undergraduate',
     expertise: ['Leadership', 'Software Engineering', 'Project Management', 'Full Stack Development'],
     bio: 'Leading TetraNeurons with a vision to build meaningful, human-centered software solutions.',
-    avatar: '👨‍💼',
+    avatarType: 'leader',
     email: 'samsudeenashad@gmail.com',
     phone: '0705390110',
     slug: 'samsudeen-ashad',
@@ -45,7 +45,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Software Developer',
     expertise: ['Python', 'TensorFlow', 'Machine Learning', 'LLMs', 'Data Science'],
     bio: 'Focused on developing intelligent solutions using cutting-edge AI technologies.',
-    avatar: '👨‍💻',
+    avatarType: 'developer',
     email: 'isharamadunika9@gmail.com',
     phone: '0770264992',
     slug: 'isara-madunika',
@@ -63,7 +63,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Software Developer',
     expertise: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Full Stack Development'],
     bio: 'Passionate about building scalable web applications with modern technologies.',
-    avatar: '🤖',
+    avatarType: 'developer',
     email: 'kulasoooriyaa@gmail.com',
     phone: '0785866652',
     slug: 'thiramithu-kulasooriya',
@@ -81,7 +81,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Software Developer',
     expertise: ['Ballerina', 'Node.js', 'PostgreSQL', 'REST API', 'Backend Development'],
     bio: 'Ensuring scalable, secure, and reliable infrastructure for all projects.',
-    avatar: '☁️',
+    avatarType: 'developer',
     email: 'ksdeshappriya.official@gmail.com',
     phone: '0710559795',
     slug: 'kavindu-deshapriya',
@@ -99,7 +99,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Software Developer',
     expertise: ['Agile', 'Scrum', 'Business Analysis', 'Strategic Planning', 'Full Stack Development'],
     bio: 'Coordinating teams and ensuring successful project delivery.',
-    avatar: '📊',
+    avatarType: 'developer',
     email: 'sadeesha.jayaweera@gmail.com',
     phone: '0774928297',
     slug: 'sadesha-jayaweera',
@@ -120,3 +120,4 @@ export function getTeamMemberBySlug(slug: string): TeamMember | undefined {
 export function getAllTeamSlugs(): string[] {
   return teamMembers.map((member) => member.slug);
 }
+

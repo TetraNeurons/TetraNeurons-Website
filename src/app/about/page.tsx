@@ -108,39 +108,39 @@ export default function About() {
   const hackathonWins = [
     {
       year: '2025',
+      title: 'IntelliHack',
+      achievement: '2nd Runner-Up',
+      description: 'TetraNeurons Disaster Management Application - IEEE Computational Intelligence Society',
+    },
+    {
+      year: '2025',
       title: 'Innovative Nation Sri Lanka (INSL)',
       achievement: '1st Place Winner',
-      description: 'TetraNeurons Disaster Management Application - IEEE Sri Lanka (IEEE Main Branch)',
+      description: 'Agrilanka (Next.js) - IEEE Sri Lanka (IEEE Main Branch)',
+    },
+    {
+      year: '2025',
+      title: 'Innovate with Ballerina (WSO2)',
+      achievement: 'Finalist',
+      description: 'Agrilanka (Ballerina) - Cloud-native integration & APIs',
     },
     {
       year: '2025',
       title: 'GreenExe 3.0',
       achievement: '1st Runner-Up',
-      description: 'Agrilanka project - Association of Software Engineering, NSBM Green University',
-    },
-    {
-      year: '2025',
-      title: 'Innovate with Ballerina (WSO2)',
-      achievement: 'Top 10 Finalist',
-      description: 'Baminithiya Disaster Management Application - Cloud-native integration & APIs',
-    },
-    {
-      year: '2025',
-      title: 'IntelliHack',
-      achievement: 'Participant',
-      description: 'TetraNeurons Disaster Management Application - AI-assisted disaster response',
-    },
-    {
-      year: '2025',
-      title: 'SaaS Sprint',
-      achievement: 'Participant',
-      description: 'Agrilanka - SaaS platforms and digital marketplaces',
+      description: 'Baminithiya - Association of Software Engineering, NSBM Green University',
     },
     {
       year: '2025',
       title: 'NBQSA (National Best Quality Software Awards)',
       achievement: 'Submitted',
-      description: 'Heritage Lanka - Travel Guide Platform - Software Innovation / Web Applications',
+      description: 'Baminithiya - Software Innovation / Web Applications category',
+    },
+    {
+      year: '2025',
+      title: 'SaaS Sprint',
+      achievement: 'Participant',
+      description: 'Heritage Lanka - Travel Guide Platform - SaaS competition',
     },
   ];
 
