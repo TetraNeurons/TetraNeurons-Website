@@ -42,6 +42,7 @@ export default function Navbar() {
               { href: '/about', label: 'About' },
               { href: '/projects', label: 'Projects' },
               { href: '/team', label: 'Team' },
+              { href: '/blog', label: 'Blog' },
               { href: '/contact', label: 'Contact' },
             ].map((link) => (
               <Link
@@ -92,6 +93,7 @@ export default function Navbar() {
               { href: '/about', label: 'About' },
               { href: '/projects', label: 'Projects' },
               { href: '/team', label: 'Team' },
+              { href: '/blog', label: 'Blog' },
               { href: '/contact', label: 'Contact' },
             ].map((link, index) => (
               <Link
