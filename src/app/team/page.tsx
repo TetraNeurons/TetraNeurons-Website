@@ -1,9 +1,53 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+
+// Professional SVG Icons
+const BookOpenIcon = () => (
+  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+  </svg>
+);
+
+const UsersGroupIcon = () => (
+  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+  </svg>
+);
+
+const LightBulbIcon = () => (
+  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+  </svg>
+);
+
+const CheckBadgeIcon = () => (
+  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+  </svg>
+);
+
+const UserGroupIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+  </svg>
+);
+
+// Team member avatar icons
+const LeaderIcon = () => (
+  <svg className="w-16 h-16 text-blue-500" fill="none" stroke="currentColor" strokeWidth={1} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+  </svg>
+);
+
+const DeveloperIcon = () => (
+  <svg className="w-16 h-16 text-cyan-500" fill="none" stroke="currentColor" strokeWidth={1} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+  </svg>
+);
 
 export default function Team() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -35,7 +79,7 @@ export default function Team() {
       role: 'Team Lead | Software Engineering Undergraduate',
       expertise: ['Leadership', 'Software Engineering', 'Project Management', 'Full Stack'],
       bio: 'Leading TetraNeurons with a vision to build meaningful, human-centered software solutions.',
-      avatar: '👨‍�',
+      avatarType: 'leader',
       email: 'samsudeenashad@gmail.com',
       phone: '0705390110',
       slug: 'samsudeen-ashad',
@@ -46,7 +90,7 @@ export default function Team() {
       role: 'Software Developer',
       expertise: ['Python', 'TensorFlow', 'Machine Learning', 'LLMs'],
       bio: 'Focused on developing intelligent solutions using cutting-edge AI technologies.',
-      avatar: '👨‍💻',
+      avatarType: 'developer',
       email: 'isharamadunika9@gmail.com',
       phone: '0770264992',
       slug: 'isara-madunika',
@@ -57,7 +101,7 @@ export default function Team() {
       role: 'Software Developer',
       expertise: ['Next.js', 'React', 'Node.js', 'TypeScript'],
       bio: 'Passionate about building scalable web applications with modern technologies.',
-      avatar: '🤖',
+      avatarType: 'developer',
       email: 'kulasoooriyaa@gmail.com',
       phone: '0785866652',
       slug: 'thiramithu-kulasooriya',
@@ -68,7 +112,7 @@ export default function Team() {
       role: 'Software Developer',
       expertise: ['Ballerina', 'Node.js', 'PostgreSQL', 'REST API'],
       bio: 'Ensuring scalable, secure, and reliable infrastructure for all projects.',
-      avatar: '☁️',
+      avatarType: 'developer',
       email: 'ksdeshappriya.official@gmail.com',
       phone: '0710559795',
       slug: 'kavindu-deshapriya',
@@ -79,36 +123,36 @@ export default function Team() {
       role: 'Software Developer',
       expertise: ['Agile', 'Scrum', 'Business Analysis', 'Full Stack'],
       bio: 'Coordinating teams and ensuring successful project delivery.',
-      avatar: '�',
+      avatarType: 'developer',
       email: 'sadeesha.jayaweera@gmail.com',
       phone: '0774928297',
       slug: 'sadesha-jayaweera',
     },
   ];
 
-  const values = [
+  const values: { title: string; description: string; icon: ReactNode; color: string }[] = [
     {
       title: 'Continuous Learning',
       description: 'We invest in our team\'s growth and encourage continuous learning and skill development.',
-      icon: '📚',
+      icon: <BookOpenIcon />,
       color: 'from-blue-500 to-cyan-500',
     },
     {
       title: 'Collaboration',
       description: 'We believe in open communication and collaborative problem-solving.',
-      icon: '🤝',
+      icon: <UsersGroupIcon />,
       color: 'from-green-500 to-emerald-500',
     },
     {
       title: 'Innovation',
       description: 'We encourage creative thinking and are not afraid to experiment with new ideas.',
-      icon: '💡',
+      icon: <LightBulbIcon />,
       color: 'from-purple-500 to-violet-500',
     },
     {
       title: 'Accountability',
       description: 'We take ownership of our work and deliver results with integrity.',
-      icon: '✅',
+      icon: <CheckBadgeIcon />,
       color: 'from-amber-500 to-orange-500',
     },
   ];
@@ -127,7 +171,8 @@ export default function Team() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 mb-8 animate-fade-in-down">
-            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">👥 Our Amazing Team</span>
+            <UserGroupIcon />
+            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Our Amazing Team</span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 animate-fade-in-up">
@@ -148,12 +193,17 @@ export default function Team() {
             {teamMembers.map((member, index) => (
               <div key={member.id} className={`scroll-animate opacity-0 translate-y-10 group bg-white dark:bg-[#0f172a] rounded-2xl overflow-hidden border border-blue-100 dark:border-blue-900/30 hover:border-transparent transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-500/20 ${index === 0 ? 'md:col-span-2 lg:col-span-1 ring-2 ring-blue-500/50' : ''}`}>
                 {/* Avatar */}
-                <div className={`h-40 bg-gradient-to-br ${index === 0 ? 'from-blue-500 via-cyan-500 to-blue-600' : 'from-blue-400 to-cyan-500'} flex items-center justify-center text-7xl relative overflow-hidden`}>
+                <div className={`h-40 bg-gradient-to-br ${index === 0 ? 'from-blue-500 via-cyan-500 to-blue-600' : 'from-blue-400 to-cyan-500'} flex items-center justify-center relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
-                  <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{member.avatar}</span>
+                  <div className="relative z-10 w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-125 transition-transform duration-500 border border-white/30">
+                    {member.avatarType === 'leader' ? <LeaderIcon /> : <DeveloperIcon />}
+                  </div>
                   {index === 0 && (
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-[#0f172a]/90 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full shadow-lg">
-                      ⭐ Team Lead
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-[#0f172a]/90 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full shadow-lg flex items-center gap-1">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      Team Lead
                     </div>
                   )}
                 </div>
@@ -265,3 +315,5 @@ export default function Team() {
     </main>
   );
 }
+
+

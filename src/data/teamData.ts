@@ -4,7 +4,7 @@ export interface TeamMember {
   role: string;
   expertise: string[];
   bio: string;
-  avatar: string;
+  avatarType: 'leader' | 'developer';
   email: string;
   phone: string;
   slug: string;
