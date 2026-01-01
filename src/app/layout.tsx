@@ -13,25 +13,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
-  description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions in Web3, sustainable tech, and enterprise applications.",
-  keywords: "AI, Software Development, Innovation, Hackathon, Web3, Sustainable Technology, Enterprise Solutions, Next.js, TypeScript, Tailwind CSS, Agentic AI",
-  authors: [{ name: "TetraNeurons" }],
-  metadataBase: new URL('https://tetraneurons.com'), // Placeholder for canonical URL
+  title: {
+    default: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
+    template: "%s | TetraNeurons",
+  },
+  description: "TetraNeurons is a team of passionate developers and innovators building cutting-edge software solutions. Award-winning hackathon champions specializing in AI, disaster management, sustainable agriculture, and heritage preservation technology.",
+  keywords: [
+    "TetraNeurons",
+    "AI Software Development",
+    "Machine Learning Solutions",
+    "Sri Lanka Tech Startup",
+    "Hackathon Champions",
+    "Disaster Management App",
+    "Agrilanka",
+    "Heritage Lanka",
+    "Web Development",
+    "Next.js Development",
+    "React Development",
+    "TypeScript",
+    "Software Innovation",
+    "Agentic AI",
+    "Enterprise Solutions",
+    "IntelliHack Winners",
+    "INSL Winners",
+  ],
+  authors: [{ name: "TetraNeurons", url: "https://www.tetraneurons.online" }],
+  creator: "TetraNeurons",
+  publisher: "TetraNeurons",
+  metadataBase: new URL('https://www.tetraneurons.online'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
-    description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions.",
-    url: 'https://tetraneurons.com',
-    siteName: 'TetraNeurons Software Company',
+    description: "TetraNeurons is a team of passionate developers and innovators building cutting-edge software solutions in AI, disaster management, agriculture, and heritage preservation.",
+    url: 'https://www.tetraneurons.online',
+    siteName: 'TetraNeurons',
     images: [
       {
-        url: '/og-image.jpg', // Placeholder for social media image
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'TetraNeurons - AI-Driven Software Innovation',
+        type: 'image/jpeg',
       },
     ],
     locale: 'en_US',
@@ -39,11 +63,30 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "TetraNeurons - AI-Driven Software Innovation | Award-Winning Team",
-    description: "Empowering businesses with AI-driven software and agentic innovation. Award-winning hackathon team building cutting-edge solutions.",
-    creator: '@TetraNeurons', // Placeholder for Twitter handle
-    images: ['/og-image.jpg'], // Placeholder for social media image
+    title: "TetraNeurons - AI-Driven Software Innovation",
+    description: "Award-winning team building cutting-edge AI solutions for disaster management, agriculture, and heritage preservation.",
+    creator: '@TetraNeurons',
+    site: '@TetraNeurons',
+    images: ['/og-image.jpg'],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Add your verification codes here when you have them
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({
@@ -51,6 +94,52 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // JSON-LD Structured Data for Organization
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TetraNeurons",
+    "description": "TetraNeurons is a team of passionate developers and innovators building cutting-edge software solutions in AI, disaster management, agriculture, and heritage preservation.",
+    "url": "https://www.tetraneurons.online",
+    "logo": "https://www.tetraneurons.online/logo.png",
+    "sameAs": [
+      "https://github.com/TetraNeurons",
+      "https://linkedin.com/company/tetraneurons"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "tetraneurons@gmail.com",
+      "contactType": "customer service"
+    },
+    "foundingDate": "2024",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Samsudeen Ashad"
+      }
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Web Development",
+      "Disaster Management Systems",
+      "Agricultural Technology",
+      "Heritage Preservation"
+    ]
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "TetraNeurons",
+    "url": "https://www.tetraneurons.online",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.tetraneurons.online/blog?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -60,6 +149,19 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563eb" />
+        
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        
         <script
           dangerouslySetInnerHTML={{
             __html: `
