@@ -76,7 +76,7 @@ export default function Team() {
     {
       id: 1,
       name: 'SAMSUDEEN ASHAD',
-      role: 'Project Manager | Frontend Engineer',
+      role: 'Frontend Engineer',
       expertise: ['Project Management', 'Frontend Development', 'React', 'Next.js'],
       bio: 'Leading TetraNeurons with a vision to build meaningful, human-centered software solutions.',
       avatarType: 'developer',
